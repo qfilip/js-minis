@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="index.css" rel="stylesheet" />
+    <link rel="icon" href="./media/slot.png">
+    <title>Neslotter</title>
+</head>
+
+<body class="nes-container is-dark">
+    <br/>
+    <div class="w3-container">
+        <div class="w3-center w3-xlarge nes-container">Neslotter</div>
+    </div>
+    <br/>
+    <div class="w3-container">
+        <div class="w3-third w3-center">
+            <div class="w3-container">
+
+            </div>
+        </div>
+        <div class="w3-third w3-center">
+            <img id="slot-1" class="slot" src="media/kumquat.png" />
+            <img id="slot-2" class="slot" src="media/kumquat.png" />
+            <img id="slot-3" class="slot" src="media/kumquat.png" />
+        </div>
+        <div class="w3-third w3-center">
+            <button onclick="spin()" type="button" class="nes-btn is-error">Spin</button>
+        </div>
+    </div>
+    <br/>
+    <div class="w3-container">
+        <progress id="progress-bar" class="nes-progress is-warning" value="0" max="100"></progress>
+    </div>
+</body>
+
+
+<script src="variables.js"></script>
+<script src="functions.js"></script>
+<script>
+    (() => {
+        loadDomElements();
+    })()
+    function test() {
+        
+    }
+</script>
+</html>

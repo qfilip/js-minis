@@ -1,0 +1,15 @@
+body {
+    height: 98vh;
+    overflow: hidden;
+}
+img {
+    width: 30%;
+}
+
+.test {
+    
+}
+
+@keyframes mymove {
+    50% {font-size: 30px;}
+  }
