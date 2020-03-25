@@ -14,15 +14,27 @@
 </head>
 
 <body class="nes-container is-dark">
-    <br/>
+    <br />
     <div class="w3-container">
         <div class="w3-center w3-xlarge nes-container">Neslotter</div>
     </div>
-    <br/>
+    <br />
     <div class="w3-container">
         <div class="w3-third w3-center">
             <div class="w3-container">
-
+                <div class="w3-third">Cash:</div>
+                <div class="w3-twothird"><span id='cash'></span>$</div>
+            </div>
+            <div class="w3-container">
+                <div class="w3-third">Bet:</div>
+                <div class="w3-twothird"><span id='bet'></span>$</div>
+            </div>
+            <div class="w3-container w3-center">
+                <div class="w3-third">
+                    <br />
+                    <a onclick="changeBet(5)" class="inline nes-btn is-success"> + </a>
+                    <a onclick="changeBet(-5)" class="inline nes-btn is-error"> - </a>
+                </div>
             </div>
         </div>
         <div class="w3-third w3-center">
@@ -34,10 +46,21 @@
             <button onclick="spin()" type="button" class="nes-btn is-error">Spin</button>
         </div>
     </div>
-    <br/>
+    <br />
     <div class="w3-container">
         <progress id="progress-bar" class="nes-progress is-warning" value="0" max="100"></progress>
     </div>
+
+    <!--dialogues-->
+    <dialog class="nes-dialog is-dark" id="dialog-dark">
+        <form method="dialog">
+            <p class="title">Banana</p>
+            <p>You're too poor to gamble here</p>
+            <menu class="dialog-menu">
+                <button class="nes-btn is-primary">Confirm</button>
+            </menu>
+        </form>
+    </dialog>
 </body>
 
 
@@ -48,7 +71,8 @@
         loadDomElements();
     })()
     function test() {
-        
+
     }
 </script>
+
 </html>

@@ -7,11 +7,18 @@ function sleep (time) {
 }
 
 function spin() {
-    changeProgressBar(0, true);
-    let slots = getSlots();
-    const length = slots.length;
-    spinSlots(slots, 0, length);
-    updateProgressBar(0);
+    if(cashAmount - betSize >= 0) {
+        cashAmount -= betSize;
+        cash.innerText = cashAmount;
+        changeProgressBar(0, true);
+        let slots = getSlots();
+        const length = slots.length;
+        spinSlots(slots, 0, length);
+        updateProgressBar(0);
+    }
+    else {
+        dialog.showModal();
+    }
 }
 
 function spinSlots(slots, slotIndex, numOfSlots) {
@@ -29,7 +36,6 @@ function spinSlots(slots, slotIndex, numOfSlots) {
             
             sleep(1000).then(() => {
                 slots[slotIndex].src = images[3].url;
-                // sleep(300).then(changeProgressBar(33));
             });
             spinSlots(slots, slotIndex + 1, numOfSlots);
         });
@@ -47,4 +53,12 @@ function updateProgressBar(time) {
 
 function changeProgressBar(value, reset = null) {
     (!!reset) ? progress.value = 0 : progress.value += value;
+}
+
+function changeBet(value) {
+    const control = betSize + value;
+    if(control > 0 && control <= cashAmount) {
+        betSize = control;
+        bet.innerText = betSize;
+    }
 }
