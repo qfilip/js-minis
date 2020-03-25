@@ -30,10 +30,10 @@ function initialize() {
     cash = document.getElementById('cash');
     bet = document.getElementById('bet');
 
-    target.src = urls[0];
     cash.innerText = cashAmount;
     bet.innerText = betSize;
-
+    
     urls.forEach((url, index) => images.push({id: index, url: url}));
+    target.src = urls[0];
     imagesLength = images.length;
 }

@@ -46,7 +46,7 @@ function spinSlots(slots, slotIndex, numOfSlots) {
         });
     }
     else {
-        sleep(1000).then(computeWinnings());
+        sleep(300).then(() => computeWinnings());
     }
 }
 
