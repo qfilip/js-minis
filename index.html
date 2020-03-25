@@ -50,6 +50,13 @@
     <div class="w3-container">
         <progress id="progress-bar" class="nes-progress is-warning" value="0" max="100"></progress>
     </div>
+    <div class="w3-container w3-center">
+        <div>
+            Target fruit: <img id="target" class="target" src="" />
+            <a onclick="changeTarget(-1)" class="inline nes-btn is-success"> &lt; </a>
+            <a onclick="changeTarget(1)" class="inline nes-btn is-error"> &gt; </a>
+        </div>
+    </div>
 
     <!--dialogues-->
     <dialog class="nes-dialog is-dark" id="dialog-dark">
@@ -68,7 +75,7 @@
 <script src="functions.js"></script>
 <script>
     (() => {
-        loadDomElements();
+        initialize();
     })()
     function test() {
 
