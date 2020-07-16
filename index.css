@@ -1,14 +1,41 @@
 body {
-    height: 98vh;
+    height: 99vh;
     overflow: hidden;
 }
 
-img {
-    width: 30%;
+.slot {
+    width: 25%;
     /* backface-visibility: hidden; */
     transform-style: preserve-3d;
 }
 
+#result-status > div {
+    margin-top: 1rem;
+}
+
+#result-status-img {
+    width: 30%;
+}
+
+#result-status-text {
+    font-size: 1.2rem;
+    animation-name: textanim;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+}
+
 .target {
-    width: 10%;
+    width: 5%;
+}
+
+@keyframes textanim {
+    0% { color: yellow; }
+    12.5% { color: orange; }
+    25% { color: orangered; }
+    37.5% { color: orange; }
+    50% { color: yellow; }
+    62.5% { color: orange; }
+    75% { color: orangered; }
+    87.5% { color: orange; }
+    100% { color: yellow; }
 }

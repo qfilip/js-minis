@@ -7,6 +7,8 @@ function sleep(time) {
 }
 
 function spin() {
+    resultStatus.style.display = 'none';
+
     if(spinDisabled) return;
 
     if (cashAmount - betSize >= 0) {
@@ -15,8 +17,10 @@ function spin() {
         cash.innerText = cashAmount;
         changeProgressBar(0, true);
         let slots = getSlots();
-        const length = slots.length;
-        spinSlots(slots, 0, length);
+        
+        spinSlots(slots, 0)
+        .then(x => spinSlots(slots, 1))
+        .then(x => spinSlots(slots, 2));
         updateProgressBar(0);
     }
     else {
@@ -24,9 +28,10 @@ function spin() {
     }
 }
 
-function spinSlots(slots, slotIndex, numOfSlots) {
-    if (slotIndex < numOfSlots) {
-        sleep(300).then(() => {
+function spinSlots(slots, slotIndex) {
+    return new Promise((resolve, _) => {
+        setTimeout(() => {
+            console.log('spinning', slotIndex)
             const rotation = [
                 { transform: 'rotateX(0deg)', filter: 'blur(0)' },
                 { transform: 'rotateX(3600deg)', filter: 'blur(3px)' }
@@ -36,18 +41,14 @@ function spinSlots(slots, slotIndex, numOfSlots) {
                 playbackRate: 1,
                 duration: 3000
             });
+            
+            const random = getRandom();
+            slotIds.push(images[random].id);
+            slots[slotIndex].src = images[random].url;
 
-            sleep(1000).then(() => {
-                const random = getRandom();
-                slotIds.push(images[random].id);
-                slots[slotIndex].src = images[random].url;
-            });
-            spinSlots(slots, slotIndex + 1, numOfSlots);
-        });
-    }
-    else {
-        sleep(300).then(() => computeWinnings());
-    }
+            resolve(slotIndex + 1);
+        }, 300);
+    });
 }
 
 function computeWinnings() {
@@ -56,9 +57,16 @@ function computeWinnings() {
     slotIds.forEach(x => {
         if (targetId === x) counter++;
     });
-
     cashAmount += betSize * counter;
     cash.innerText = cashAmount;
+    slotIds = [];
+
+    const won = counter > 0;
+
+    resultStatus.style.display = 'block';
+    statusImg.src = resultMedia[won ? 0 : 1];
+    statusText.innerText = 
+        won ? `You win ${betSize * counter} credits!!!` : 'Better luck next time';
 }
 
 function updateProgressBar(time) {
@@ -66,6 +74,8 @@ function updateProgressBar(time) {
         if (time < 900) {
             changeProgressBar(1);
             updateProgressBar(time + 9);
+        } else {
+            computeWinnings();
         }
     });
 }
