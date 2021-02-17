@@ -1,52 +1,56 @@
-function makePaymentRequest() {
-    [sender, reciever] = makeSendRecPair();
-    const amount = getRandom(users[sender].balance + 400);
+import * as utils from './utils.js';
+import * as renderer from './render.js';
+
+export function makePaymentRequest() {
+    let [sender, reciever] = utils.makeSendRecPair();
     const details = {
-        sender: sender,
-        reciever: reciever,
-        amount: getRandom(users[sender].balance + 400)
+        sender: Object.assign({}, users[sender]),
+        reciever: Object.assign({}, users[reciever]),
+        amount: utils.getRandom(users[sender].balance + 400)
     };
 
     const event = {
-        id: makeId(),
+        id: utils.makeId(),
         sourceId: null,
         status: 'pending',
-        details: JSON.stringify(details)
+        details: details,
+        createdOn: new Date()
     }
     events.push(event);
     window.localStorage.setItem('events', JSON.stringify(events));
-    renderLists();
+    renderer.renderAll();
 }
 
-function resolvePendingRequests() {
+export function resolvePendingRequests() {
     const pendingIds = events.filter(x => x.sourceId === null).map(x => x.id);
     const processedIds = events.filter(x => x.sourceId !== null).map(x => x.sourceId);
     const unprocessedIds = pendingIds.filter(x => !processedIds.includes(x));
     const unprocessed = events.filter(x => unprocessedIds.includes(x.id));
 
     unprocessed.forEach(x => resolveRequest(x));
+    renderer.renderAll();
 }
 
-function resolveRequest(ev) {
-    let details = JSON.parse(ev.details);
+export function resolveRequest(ev) {
     let result = {
-        id: makeId(),
+        id: utils.makeId(),
         sourceId: ev.id,
         status: null,
-        details: ev.details
+        details: ev.details,
+        createdOn: new Date()
     };
-    if(users[details.sender].balance < details.amount) {
+    const sender = users.find(x => x.id === ev.details.sender.id);
+    const reciever = users.find(x => x.id === ev.details.reciever.id);
+    if(sender.balance < ev.details.amount) {
         result.status = 'failed';
     }
     else {
-        users[details.sender].balance -= details.amount;
-        users[details.reciever].balance += details.amount;
+        sender.balance -= ev.details.amount;
+        reciever.balance += ev.details.amount;
         result.status = 'resolved';
     }
     events.push(result);
     
     window.localStorage.setItem('events', JSON.stringify(events));
     window.localStorage.setItem('users', JSON.stringify(users));
-
-    renderLists();
 }

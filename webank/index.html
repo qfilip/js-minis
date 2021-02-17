@@ -4,51 +4,83 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/w3-css/4.1.0/4/w3pro.css' integrity='sha512-vsFph8w41P5H52b+7zkZZzyy1A+cs3dfbp6lIgYudEHrXci96cv0Uh1IludFsvzGiLKxXoD0zLG4nyGfg2nPLw==' crossorigin='anonymous'/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/w3-css/4.1.0/w3.min.css' integrity='sha512-Z6UIAdEZ7JNzeX5M/c5QZj+oqbldGD+E8xJEoOwAx5e0phH7kdjsWULGeK5l2UjehKtChHDaUY2rQAF/NEiI9w==' crossorigin='anonymous'/>
+    <!-- <link rel="stylesheet" href="path/to/line-awesome/css/line-awesome-font-awesome.min.css"> -->
     <link rel="stylesheet" href="./index.css">
-    <title>Document</title>
+    <title>Webank</title>
 </head>
 <body>
-    <h3 class="w3-black w3-center">Event source</h3>
+    <h3 class="w3-black w3-center">Webank</h3>
     <div class="w3-row">
-        <div id="users" class="w3-col s6 m6 l6">
-            <div>Name: user.name, Balance: user.balance</div>
+        <div class="w3-col s6 m6 l6">
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users"></tbody>
+                </table>
+            </div>
+            <div id="selected-user">
+                <div>name</div>
+                <select id="event-dates">
+                    <option value=""></option>
+                </select>
+            </div>
         </div>
-        <div class="table-container w3-col s6 m6 l6">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Details</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="events">
-                </tbody>
-                <tfoot id="scroll-target"></tfoot>
-            </table>
+        <div class="w3-col s6 m6 l6">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Details</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="events">
+                    </tbody>
+                    <tfoot id="scroll-target"></tfoot>
+                </table>
+            </div>
+            <div class="w3-center">
+                <button id="cfg-scroll" onclick="toggleAutoScroll()" class="w80 w3-green"></button>
+            </div>
+            <div class="w3-center w3-row">
+                <div class="w3-col s6 m6 l6">Resolved <span></span></div>
+                <div class="w3-col s6 m6 l6">Rejected <span></span></div>
+            </div>
         </div>
     </div>
 
-    <script src="./js/utils.js"></script>
-    <script src="./js/render.js"></script>
-    <script src="./js/eventHandlers.js"></script>
-    <script>
+    <script src="./js/globals.js"></script>
+    <script type="module" src="./js/utils.js"></script>
+    <script type="module" src="./js/render.js"></script>
+    <script type="module" src="./js/eventHandlers.js"></script>
+    <script type="module" src="./js/conf.js"></script>
+
+    <script type="module">
+        import * as utils from './js/utils.js';
+        import * as renderer from './js/render.js';
+        import * as handlers from './js/eventHandlers.js';
+        import * as conf from './js/conf.js';
         
-        var users;
-        var events;
         (() => {
-            users = getUsers();
-            events = getEvents();
-            renderLists();
-            
-            setInterval(() => makePaymentRequest(), 3000);
-            setInterval(() => resolvePendingRequests(), 10000);
+            users = utils.getUsers();
+            events = utils.getEvents();
+            renderer.renderAll();
+            exposeModule();
+            setInterval(() => handlers.makePaymentRequest(), 3000);
+            setInterval(() => handlers.resolvePendingRequests(), 10000);
         })()
 
-
-        
-
-        
+        function exposeModule() {
+            // https://stackoverflow.com/questions/44590393/es6-modules-undefined-onclick-function-after-import
+            window.toggleAutoScroll = conf.toggleAutoScroll;
+            window.loadUser = renderer.loadUser;
+        }
     </script>
 </body>
 </html>
