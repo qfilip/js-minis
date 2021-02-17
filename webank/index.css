@@ -1,0 +1,23 @@
+.table-container {
+    height: 500px;
+    overflow: auto;
+}
+table {
+    width: 100%;
+}
+
+tbody tr:nth-child(even){
+    background-color: #4CAF50;
+}
+
+tr > th {
+    background-color: black;
+    color: whitesmoke;
+    font-weight: bold;
+    width: 50%;
+}
+
+tr > td {
+    text-align: center;
+    padding: 3px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/w3-css/4.1.0/4/w3pro.css' integrity='sha512-vsFph8w41P5H52b+7zkZZzyy1A+cs3dfbp6lIgYudEHrXci96cv0Uh1IludFsvzGiLKxXoD0zLG4nyGfg2nPLw==' crossorigin='anonymous'/>
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+</head>
+<body>
+    <h3 class="w3-black w3-center">Event source</h3>
+    <div class="w3-row">
+        <div id="users" class="w3-col s6 m6 l6">
+            <div>Name: user.name, Balance: user.balance</div>
+        </div>
+        <div class="table-container w3-col s6 m6 l6">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Details</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="events">
+                </tbody>
+                <tfoot id="scroll-target"></tfoot>
+            </table>
+        </div>
+    </div>
+
+    <script src="./js/utils.js"></script>
+    <script src="./js/render.js"></script>
+    <script src="./js/eventHandlers.js"></script>
+    <script>
+        
+        var users;
+        var events;
+        (() => {
+            users = getUsers();
+            events = getEvents();
+            renderLists();
+            
+            setInterval(() => makePaymentRequest(), 3000);
+            setInterval(() => resolvePendingRequests(), 10000);
+        })()
+
+
+        
+
+        
+    </script>
+</body>
+</html>
