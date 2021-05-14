@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hex Adder</title>
+    <style>
+        div {
+            margin: 10px;
+            width: 20%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>Higher value</span>
+        <input id="hv" type="text" />
+    </div>
+    <div>
+        <span>Lower value</span>
+        <input id="lv" type="text" />
+    </div>
+    <div>
+        <button onclick="compute()">Compute</button>
+    </div>
+    <div>
+        <span>Target Higher Value</span>
+        <input id="tv" type="text" />
+    </div>
+    <div>
+        <span>Target Lower Value</span>
+        <input id="rv" type="text" />
+    </div>
+
+    <script>
+        const byid = (x) => document.getElementById(x);
+
+        function compute() {
+            let hv = byid('hv').value;
+            let lv = byid('lv').value;
+            let tv = byid('tv').value;
+            let rv = byid('rv').value;
+
+            hv = cleanHex(hv);
+            lv = cleanHex(lv);
+            tv = cleanHex(tv);
+            rv = cleanHex(rv);
+            
+            let hvArr = hv.match(/.{2}/g);
+            let lvArr = lv.match(/.{2}/g);
+            let tvArr = tv.match(/.{2}/g);
+            
+            let hvi = hvArr.map(x => hexToInt(x));
+            let lvi = lvArr.map(x => hexToInt(x));
+            let tvi = tvArr.map(x => hexToInt(x));
+
+            let hexResult = '#';
+
+            for (let i = 0; i < 3; i++) {
+                let diff = hvi[i] - lvi[i];
+                let hexPiece = tvi[i] - diff;
+                hexResult += `${intToHex(hexPiece)}`;
+            }
+
+            rv.value = intToHex(r);
+        }
+
+        function intToHex(int) {
+            let hex = Number(int).toString(16);
+            hex = '00'.substr(0, 2 - hex.length) + hex; // ensure 2 character hex
+            
+            return `${hex}`;
+        }
+
+        function cleanHex(h) {
+            return h.replace('#', '');
+        }
+
+        function hexToInt(hex) {
+            hex = cleanHex(hex);
+            return parseInt(hex, 16);
+        }
+    </script>
+</body>
+</html>
