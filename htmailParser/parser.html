@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="parser.css">
+    <title>Htmail Generator</title>
+</head>
+
+<body>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2 class="txt-center">Example</h2>
+            <div class="modal-container">
+                <div class="quarter"></div>
+                <div class="modal-exmpl">
+                    <fieldset>
+                        <legend>Html Code</legend>
+                        <pre>
+&ltstyle>
+    .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+&lt/style>
+
+&ltdiv class="mx-auto">
+    Some text
+    &ltdiv>{_myVar}&lt/div>
+    |c#|
+    foreach(var v in myVar)
+    {
+        Console.WriteLine(v);
+    }
+    |c#|
+&lt/div>
+                        </pre>
+                </div>
+                </fieldset>
+                <div class="modal-exmpl">
+                    <fieldset>
+                        <legend>Result Code</legend>
+                        <pre>
+builder.Append("&ltdiv style=\"margin-left: auto; margin-right: auto;\">");
+builder.Append("Some text");
+builder.Append("&ltdiv>");
+builder.Append(myVar);
+builder.Append("&lt/div>");
+foreach(var v in myVar)
+{
+    Console.WriteLine(v);
+}
+builder.Append("&lt/div>");
+                        </pre>
+                    </fieldset>
+                </div>
+                <div class="quarter"></div>
+            </div>
+            <div class="container">
+                <div>
+                    <div class="intructions">
+                        <div>Put variables within square brackets with an underscore before name {_myVar}</div>
+                        <div>If a variable is a private field, just add another underscore {__myVar}</div>
+                        <div>Put C# code between |c#|. Example:</div>
+                        <div>|c#|</div>
+                        <div>Console.WriteLine("Yellow World!");</div>
+                        <div>|c#|</div>
+                    </div>
+                    <h3>What's new in version 3?</h3>
+                    <ul>
+                        <li>C# statements with indentation</li>
+                        <li>This idiotic readme</li>
+                    </ul>
+                </div>
+            </div>
+            <button onclick="showReadme(false)">Close</button>
+        </div>
+    </div>
+    <h1 class="txt-center">Htmail Parser</h1>
+    <div class="container">
+        <div>
+            <div class="txt-center big-font">Your awesome email html</div>
+            <textarea name="" id="origin" rows="30" cols="70" spellcheck="false"></textarea>
+        </div>
+        <div>
+            <button onclick="f()">&rArr;</button>
+        </div>
+        <div>
+            <div class="txt-center big-font">Your awesome javascript generated C# that generates Html</div>
+            <textarea name="" id="destination" rows="30" cols="70" spellcheck="false"></textarea>
+        </div>
+    </div>
+    <!-- <div class="container">
+        <button onclick="f()">Translate</button>
+    </div> -->
+    <div class="container bottom-fix">
+        <button onclick="showReadme(true)">Readme</button>
+    </div>
+
+    <script src="parser_main.js"></script>
+
+</body>
+</html>
