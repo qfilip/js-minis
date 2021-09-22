@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    /* background: teal; */
+    background: darkslategrey;
+    color: mintcream
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: tomato;
+    text-align: center;
+}
+
+hr {
+    margin: 10px 25%;
+}
+
+fieldset {
+    width: 50%;
+    margin: auto;
+    border: 3px double azure;
+    border-radius: 20px;
+    box-shadow: 1px 1px 15px black;
+}
+
+.legend-light {
+    padding: 1px 5px;
+    border-radius: 10px;
+    border: 3px ridge grey;
+    background: cadetblue;
+    color: mintcream;
+    box-shadow: 2px 1px 5px black;
+}
+
+.legend-dark {
+    padding: 1px 5px;
+    border-radius: 10px;
+    border: 3px ridge grey;
+    background: #111;
+    color: mintcream;
+    text-shadow: .2px .2px 1px #fff;
+    box-shadow: 2px 1px 5px black;
+}
+
+.imptext {
+    font-weight: bolder;
+    color: tomato;
+    text-shadow: .5px .5px 1px black;
+}

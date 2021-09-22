@@ -1,0 +1,42 @@
+:root {
+    --c-green: #0caa41;
+}
+body {
+    background-color: #efefef;
+    color: #222;
+}
+
+h1, h2, h3, h4, h7 { 
+    text-align: center;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+kbd {
+    background-color: whitesmoke;
+    color: dodgerblue;
+    font-weight: bold;
+    padding: 0px 2px;
+}
+
+div {
+    width: 80%;
+    margin: 20px auto;
+    padding: 10px;
+    /* box-shadow: 1px 0px 7px var(--c-green); */
+    border-radius: 0px;
+    background: #e0e0e0;
+    box-shadow:  7px 7px 10px #c3c3c3,
+                -7px -7px 10px #fdfdfd;
+}
+
+span {
+    font-style: italic;
+}
+
+li {
+    margin-bottom: 7px;
+}
