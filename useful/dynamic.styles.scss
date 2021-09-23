@@ -1,0 +1,145 @@
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently */
+}
+
+.c-pointer { cursor: pointer; }
+.ev-none { pointer-events: none; }
+
+.p-relative { position: relative;}
+.p-absolute { position: absolute;}
+.p-fixed { position: fixed;}
+.p-sticky { position: sticky;}
+.p-static { position: static;}
+
+.flex { display: flex; }
+
+.content-around { justify-content: space-around; }
+.content-between { justify-content: space-between; }
+.content-center {justify-content: center; }
+.content-bottom {justify-content: end;}
+
+.align-start { align-items: flex-start; }
+.align-end { align-items: flex-end; }
+.align-center { align-items: center; }
+.align-bottom { align-items: baseline; }
+
+$root-size: 8px;
+
+// fonts
+@for $i from 1 to 100 {
+    .fs-#{$i}-pc { font-size: #{$i}#{"%"}; }
+    .fs-#{$i}-px { font-size: #{$i}px; }
+}
+
+@for $i from 1 to 200 {
+    .fs-#{$i}-rem { font-size: $root-size * $i / 10; }
+}
+
+// opacity
+@for $i from 0 to 100 {
+    .op-#{$i} { opacity: $i / 100;}
+}
+
+// margins
+@for $i from 0 to 101 {
+    .m-#{$i} { margin: $root-size * $i; }
+    .m-#{$i}-pc { margin: #{$i}#{"%"}; }
+    .m-#{$i}-px { margin: #{$i}px; }
+
+    .mx-#{$i} { margin-right: $root-size * $i; margin-left: $root-size * $i; }
+    .mx-#{$i}-pc { margin-right: #{$i}#{"%"}; margin-left: #{$i}#{"%"}; }
+    .mx-#{$i}-px { margin-right: #{$i}px; margin-left: #{$i}px; }
+
+    .my-#{$i} { margin-top: $root-size * $i; margin-bottom: $root-size * $i; }
+    .my-#{$i}-pc { margin-top: #{$i}#{"%"}; margin-bottom: #{$i}#{"%"}; }
+    .my-#{$i}-px { margin-top: #{$i}px; margin-bottom: #{$i}px; }
+
+    .mt-#{$i} { margin-top: $root-size * $i; }
+    .mt-#{$i}-pc { margin-top: #{$i}#{"%"}; }
+    .mt-#{$i}-px { margin-top: #{$i}px; }
+
+    .mb-#{$i} { margin-bottom: $root-size * $i; }
+    .mb-#{$i}-pc { margin-bottom: #{$i}#{"%"}; }
+    .mb-#{$i}-px { margin-bottom: #{$i}px; }
+
+    .mr-#{$i} { margin-right: $root-size * $i; }
+    .mr-#{$i}-pc { margin-right: #{$i}#{"%"}; }
+    .mr-#{$i}-px { margin-right: #{$i}px; }
+
+    .ml-#{$i} { margin-left: $root-size * $i; }
+    .ml-#{$i}-pc { margin-left: #{$i}#{"%"}; }
+    .ml-#{$i}-px { margin-left: #{$i}px; }
+}
+
+// paddings
+@for $i from 0 to 101 {
+    .p-#{$i} { padding: $root-size * $i; }
+    .p-#{$i}-pc { padding: #{$i}#{"%"}; }
+    .p-#{$i}-px { padding: #{$i}px; }
+
+    .px-#{$i} { padding-right: $root-size * $i; padding-left: $root-size * $i; }
+    .px-#{$i}-pc { padding-right: #{$i}#{"%"}; padding-left: #{$i}#{"%"}; }
+    .px-#{$i}-px { padding-right: #{$i}px; padding-left: #{$i}px; }
+
+    .py-#{$i} { padding-top: $root-size * $i; padding-bottom: $root-size * $i; }
+    .py-#{$i}-pc { padding-top: #{$i}#{"%"}; padding-bottom: #{$i}#{"%"}; }
+    .py-#{$i}-px { padding-top: #{$i}px; padding-bottom: #{$i}px; }
+
+    .pl-#{$i} { padding-left: $root-size * $i; }
+    .pl-#{$i}-pc { padding-left: #{$i}#{"%"}; }
+    .pl-#{$i}-px { padding-left: #{$i}px; }
+
+    .pr-#{$i} { padding-right: $root-size * $i; }
+    .pr-#{$i}-pc { padding-right: #{$i}#{"%"}; }
+    .pr-#{$i}-px { padding-right: #{$i}px; }
+
+    .pt-#{$i} { padding-top: $root-size * $i; }
+    .pt-#{$i}-pc { padding-top: #{$i}#{"%"}; }
+    .pt-#{$i}-px { padding-top: #{$i}px; }
+
+    .pb-#{$i} { padding-bottom: $root-size * $i; }
+    .pb-#{$i}-pc { padding-bottom: #{$i}#{"%"}; }
+    .pb-#{$i}-px { padding-bottom: #{$i}px; }
+}
+
+// height/width
+@for $i from 0 to 101 {
+    .h-#{$i} { height: $root-size * $i; }
+    .h-#{$i}-pc { height: #{$i}#{"%"};}
+    .h-#{$i}-px { height: #{$i}px;}
+    .h-#{$i}-vh { height: #{$i}vh;}
+
+    .w-#{$i} { width: $root-size * $i;}
+    .w-#{$i}-pc { width: #{$i}#{"%"}; }
+    .w-#{$i}-px { width: #{$i}px; }
+    .w-#{$i}-vw { width: #{$i}vw; }
+}
+
+// min-max width/height
+
+@for $i from 0 to 101 {
+    .maxh-#{$i} { max-height: $root-size * $i; }
+    .maxh-#{$i}-pc { max-height: #{$i}#{"%"}; }
+    .maxh-#{$i}-px { max-height: #{$i}px; }
+    .maxh-#{$i}-vh { max-height: #{$i}vh; }
+    
+    .minh-#{$i} { min-height: $root-size * $i!important; }
+    .minh-#{$i}-pc { min-height: #{$i}#{"%"}!important; }
+    .minh-#{$i}-px { min-height: #{$i}px!important; }
+    .minh-#{$i}-vh { min-height: #{$i}vh!important; }
+
+    .maxw-#{$i} { max-width: $root-size * $i; }
+    .maxw-#{$i}-pc { max-width: #{$i}#{"%"}; }
+    .maxw-#{$i}-px { max-width: #{$i}px; }
+    .maxw-#{$i}-vh { max-width: #{$i}vw; }
+    
+    .minw-#{$i} { min-width: $root-size * $i!important; }
+    .minw-#{$i}-pc { min-width: #{$i}#{"%"}!important; }
+    .minw-#{$i}-px { min-width: #{$i}px!important; }
+    .minw-#{$i}-vh { min-width: #{$i}vw!important; }
+}
