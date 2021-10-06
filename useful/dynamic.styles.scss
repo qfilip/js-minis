@@ -46,6 +46,10 @@ $root-size: 8px;
 }
 
 // margins
+.m-auto { margin: auto; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.my-auto { margin-top: auto; margin-bottom: auto; }
+
 @for $i from 0 to 101 {
     .m-#{$i} { margin: $root-size * $i; }
     .m-#{$i}-pc { margin: #{$i}#{"%"}; }
