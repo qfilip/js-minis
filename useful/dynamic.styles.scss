@@ -37,7 +37,7 @@ $root-size: 8px;
 }
 
 @for $i from 1 to 200 {
-    .fs-#{$i}-rem { font-size: $root-size * $i / 10; }
+    .fs-#{$i} { font-size: $root-size * $i / 10; }
 }
 
 // opacity
