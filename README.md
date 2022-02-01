@@ -7,4 +7,4 @@ Tiny static web apps (if that's a thing) that I'm making, when bored...
 Name | Description
 -----|------------
 Neslotter | Slot machine... with nes-css
-Webank | It involves transactions
+Webank | It involves transactions or something
