@@ -1,0 +1,83 @@
+body {
+    
+    /*very cool color: hsl(140, 22%, 20%);*/
+/* base colors */
+ --hue-primary:224;
+ --sat-primary:0%;
+ --hue-secondary:200;
+ --sat-secondary:0%;
+ --hue-featured:180;
+ --sat-featured:0%;
+ --luma-flowText:20%;
+ --luma-headings:5%;
+ --luma-featured:10%;
+ --luma-nav:25%;
+ --luma-header-bg:80%;
+ --luma-main-bg:100%;
+ --luma-article-bg:90%;
+ --luma-fader:70%;
+ --color-main-bg:hsl(
+  var(--hue-primary),
+  var(--sat-primary),
+  var(--luma-main-bg)
+ );
+ --color-flowText:hsl(
+  var(--hue-primary),
+  var(--sat-primary),
+  var(--luma-flowText)
+ );
+ --color-featured:hsl(
+  var(--hue-featured),
+  var(--sat-featured),
+  var(--luma-featured)
+ );
+ --color-chrome-bg:hsl(
+  var(--hue-primary),
+  var(--sat-primary),
+  var(--luma-header-bg)
+ );
+ --color-heading-text:hsl(
+  var(--hue-primary),
+  var(--sat-primary),
+  var(--luma-headings)
+ );
+ --color-modal-fader:hsla(
+  var(--hue-primary),
+  var(--sat-primary),
+  var(--luma-fader),
+  0.8
+ );
+ --color-modal-bg:hsl(
+  var(--hue-primary),
+  var(--sat-primary),
+  var(--luma-main-bg)
+ );
+ --color-nav-anchor:hsl(
+  var(--hue-featured),
+  var(--sat-primary),
+  var(--luma-nav)
+ );
+ --color-article-bg:hsl(
+  var(--hue-primary),
+  var(--sat-primary),
+  var(--luma-article-bg)
+ );
+ --color-shadow:#0003;
+ --shadow-chrome:0 0.25em 1em 0.25em var(--color-shadow);
+ --shadow-button:0 0.25em 0.25em 0.125em var(--color-shadow);
+ --shadow-formElement-focus:0 0 0.25em 0.125em #038;
+  
+ --border-hairline:1px solid #0004;
+  
+ 
+ /* base measurements */
+ 
+ --maxWidth-constrain:64rem;
+ --maxWidth-flow:40rem;
+ --maxWidth-modal:32rem;
+ --maxWidth-modalForm:24rem;
+ --pad:clamp(0.5em, min(2vw, 4vh), 4em);
+ --borderRadius-outer:0.5em;
+ --borderRadius-inner:0.25em;
+ 
+}
