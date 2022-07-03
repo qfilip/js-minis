@@ -1,0 +1,24 @@
+html,body,div,p,h1,h2,h3,h4,h5,h6,
+ul,ol,li,dl,dt,dd,form,fieldset,caption,legend,
+table,tr,td,th,address,blockquote,img {
+  margin:0;
+  padding:0;
+}
+img, fieldset {
+  border:none;
+}
+body *, *:after, *:before {
+  box-sizing:border-box;
+  flex:1 0 auto;
+}
+legend {
+  -webkit-appearance: none;
+  appearance: none;
+  display:block;
+}
+button, summary {
+  cursor:pointer;
+}
+html, body {
+  height:100%;
+}
