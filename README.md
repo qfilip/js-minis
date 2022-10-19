@@ -8,3 +8,4 @@ Name | Description
 -----|------------
 Neslotter | Slot machine... with nes-css
 Webank | It involves transactions or something
+Todo List | Event sourced todo project
