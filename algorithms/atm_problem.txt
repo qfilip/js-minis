@@ -1,0 +1,89 @@
+It's a twist on a known dynamic programming problem.
+Original is, if you have an array of numbers, and some target number, can you sum that array
+to get that number?
+
+example:
+canSum(target: 8, numbers: [2, 3, 4])
+// produces:
+[2, 2, 2, 2]
+[2, 2, 4]
+[2, 3, 3]
+[4, 4]
+
+Now the twist. Suppose it is an ATM machine, and that array represents key-value pair of
+banknotes and their quantity within ATM:
+
+---------------
+-- Problem 1 --
+---------------
+
+let banknotes = [
+	{ value: 1, qty: 3 },
+	{ value: 5, qty: 5 },
+	{ value: 10, qty: 2 },
+];
+
+canWithdraw(12, banknotes) // true -> [2*1 + 2*5] || [2*1 + 1*10]
+canWithdraw(19, banknotes) // false -> not enough 1$ banknotes to make combination of 19
+
+---------------
+-- Problem 2 --
+---------------
+
+Suppose that ATM has some initial state (random quantity of banknotes that you can define),
+and it can also receive more withdraw requests at the same time:
+
+// define your banknotes and their quantity, but I'll do it for example sake
+let initialState = { value: 1, qty: 9 }
+
+withdraw(initialState, requests: [3, 3, 7])
+
+So you have 3 requests. First one is asking to withdraw 3$, second also 3$, and third one 7$.
+
+ATM has 2 possible configurations, which are mutualy exclusive,
+so he will pick one strategy that he is set to:
+
+-	CashCow			( eject maximum amount of money )
+-	UserFriendly	( satisfy as many requests as possible )
+
+----------------------------
+-- Problem 2.a - Cash Cow --
+----------------------------
+In this configuration, ATM must eject the maximum amount of money.
+
+let initialState = { value: 1, qty: 9 }
+requests: [3, 3, 7]
+
+Total amount of money in ATM is 9$, so he will pick third request (7), since it is bigger
+than previous two combined (3 + 3 = 6)
+
+---------------------------------
+-- Problem 2.a - User Friendly --
+---------------------------------
+In this configuration, ATM must satisfy as many requests as possible.
+
+let initialState = { value: 1, qty: 9 }
+requests: [3, 3, 7]
+
+Total amount of money in ATM is 9$, so he will pick first and second request [3, 3],
+because then it satisfies two requests, instead of picking [7] which satisfies only one,
+and not enough money is left for the rest.
+
+------------
+-- Note 1 --
+------------
+If the initial state is set like this:
+
+let initialState = { value: 5, qty: 3 }
+requests: [3, 3, 7]
+
+both CashCow and UserFriendly configurations must fail, because you cannot create 3 or 7 solely out of 5$ banknotes.
+
+------------
+-- Note 2 --
+------------
+let initialState = { value: 1, qty: 10 }
+requests: [3, 3, 7]
+configuration: UserFriendly
+
+In this scenario, ATM can pick to satisfy [3, 3], or [3, 7]. There is no preference over which one it chooses.
