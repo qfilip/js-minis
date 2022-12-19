@@ -31,7 +31,7 @@ canWithdraw(19, banknotes) // false -> not enough 1$ banknotes to make combinati
 ---------------
 
 Suppose that ATM has some initial state (random quantity of banknotes that you can define),
-and it can also receive more withdraw requests at the same time:
+and it can also receive multiple withdraw requests at the same time:
 
 // define your banknotes and their quantity, but I'll do it for example sake
 let initialState = { value: 1, qty: 9 }
