@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --offset: .2rem;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            background-color: white;
+            font-size: 2rem;
+            border: 2px solid green;
+            color: green;
+            box-shadow: var(--offset) var(--offset) 0rem green;
+            cursor: pointer;
+        }
+
+        button:active {
+            transform: translate(var(--offset), var(--offset));
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <button>Click me</button>
+
+</body>
+</html>
