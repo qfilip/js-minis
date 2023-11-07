@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    button {
+        background-color: transparent;
+        color: black;
+        border: 2px solid black;
+        transition: .3s;
+    }
+
+    button:hover {
+        color: white;
+        background-color: var(--backgroundColor); /* automatically infered from .green class selector */
+        border: 2px solid var(--borderColor);
+    }
+
+    p {
+        padding: 1rem;
+        box-shadow: 2px 2px 5px var(--boxShadow);
+    }
+
+    .green {
+        --color: green;
+        --backgroundColor: green;
+        --borderColor: green;
+        --boxShadow: green;
+    }
+</style>
+<body>
+    <button class="green">Click me</button>
+    <p class="green">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis esse, quae distinctio laboriosam possimus aliquam explicabo sit veniam nulla, provident sed odio! Cumque reiciendis ad tempora ex dolorem autem id!
+    </p>
+</body>
+</html>
