@@ -6,18 +6,43 @@
     <title>Document</title>
 </head>
 <style>
-    button {
-        background-color: transparent;
-        color: black;
-        border: 2px solid black;
-        transition: .3s;
-    }
+    :root {
+            --c-black: black;
+            --c-grey: grey;
+            --c-white: white;
+            --c-green: green;
+            --offset: .2rem;
+        }
 
-    button:hover {
-        color: white;
-        background-color: var(--backgroundColor); /* automatically infered from .green class selector */
-        border: 2px solid var(--borderColor);
-    }
+        button {
+            cursor: pointer;
+            font-size: 2rem;
+            outline: none;
+
+            color: var(--color, var(--c-black));
+            background-color: var(--bgColor, var(--c-white));
+            border: 2px solid var(--borderColor, var(--c-black));
+            box-shadow: var(--offset) var(--offset) .2rem var(--color);
+            width: 15rem;
+        }
+
+        button:hover {
+            color: var(--bgColor, var(--c-black));
+            background-color: var(--color, var(--c-white));
+            box-shadow: var(--offset) var(--offset) .2rem var(--c-black);
+        }
+
+        button:active {
+            transform: translate(var(--offset), var(--offset));
+            box-shadow: none;
+        }
+
+        .green {
+            --color: var(--c-green);
+            --bgColor: var(--c-white);
+            --borderColor: var(--c-green);
+            --boxShadow: var(--cgreen);
+        }
 
     p {
         padding: 1rem;
