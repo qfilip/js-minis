@@ -22,14 +22,14 @@
             color: var(--color, var(--c-black));
             background-color: var(--bgColor, var(--c-white));
             border: 2px solid var(--borderColor, var(--c-black));
-            box-shadow: var(--offset) var(--offset) .2rem var(--color);
+            box-shadow: var(--offset) var(--offset) .2rem var(--color, var(--c-black));
             width: 15rem;
         }
 
         button:hover {
-            color: var(--bgColor, var(--c-black));
-            background-color: var(--color, var(--c-white));
-            box-shadow: var(--offset) var(--offset) .2rem var(--c-black);
+            color: var(--bgColor, var(--c-white));
+            background-color: var(--color, var(--c-black));
+            box-shadow: var(--offset) var(--offset) .2rem var(--color, var(--c-black));
         }
 
         button:active {
@@ -41,19 +41,12 @@
             --color: var(--c-green);
             --bgColor: var(--c-white);
             --borderColor: var(--c-green);
-            --boxShadow: var(--cgreen);
+            --boxShadow: var(--c-green);
         }
 
     p {
         padding: 1rem;
         box-shadow: 2px 2px 5px var(--boxShadow);
-    }
-
-    .green {
-        --color: green;
-        --backgroundColor: green;
-        --borderColor: green;
-        --boxShadow: green;
     }
 </style>
 <body>
